@@ -1,3 +1,6 @@
+import java.awt.desktop.SystemEventListener;
+import java.util.Arrays;
+
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
@@ -24,8 +27,17 @@ public class Main {
 
         System.out.println();
         inferior_square(30);
+
         System.out.print(" ");
+
         inferior_square(63);
+        System.out.print(" ");
+
+        System.out.println();
+        fibo(10);
+
+        System.out.println("fibo 2");
+        System.out.print(Arrays.toString(appoximative_fibo((float)0.01)));
     }
     static public void enumerate_while(int max) {
         int i = 0;
@@ -61,4 +73,42 @@ public class Main {
         double result = Math.floor(Math.sqrt(number));
         System.out.print(Math.round(result*result));
     }
+
+    public static int[] fibo(int number){
+
+       int[] array = new int[number];
+        array[0]=0;
+        array[1]=1;
+        int i = 2;
+
+        while(i < number){
+            int nb1 = array[i-1];
+            int nb2 = array[i-2];
+            array[i] = nb1+nb2;
+
+            i++;
+        }
+
+        return array;
+    }
+
+    public static int[] appoximative_fibo(float epsilon){
+
+        int[] array = fibo(10);
+        float phi = ((float)(1+Math.sqrt(5))/2);
+        int[] result = new int[2];
+
+        for(int i = array.length-1 ; i > 0  ; i--) {
+
+            if(((float)(Math.abs(array[i] / array[i-1]) - phi)) <= epsilon){
+
+                result[0] = array[i];
+                result[1] = array[i-1];
+                return result;
+            }
+        }
+
+        return result;
+    }
+
 }
