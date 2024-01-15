@@ -6,10 +6,40 @@ public class Main {
         // to see how IntelliJ IDEA suggests fixing it.
         System.out.printf("Hello and welcome!");
 
-        for (int i = 1; i <= 5; i++) {
-            //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-            // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-            System.out.println("i = " + i);
+        int maxNumber = 100;
+
+        enumerate_while(maxNumber);
+
+        System.out.println();
+
+        enumerate_for(maxNumber);
+
+        System.out.println();
+
+        enumerate_even(maxNumber);
+
+    }
+    static public void enumerate_while(int max) {
+        int i = 0;
+        while (i <= max) {
+            System.out.printf(" " + i);
+            i++;
+        }
+    }
+    static public void enumerate_for(int max) {
+        int i=0;
+        for (i = 0; i <= max; i++) {
+            System.out.print(" " + i);
+        }
+    }
+    static public void enumerate_even(int max) {
+        int i = 0;
+        while (i <= 100) {
+            if (i % 2 == 0) {
+
+                System.out.printf(" " + i);
+            }
+            i++;
         }
     }
 }
