@@ -11,28 +11,28 @@ public class Main {
         //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
         // to see how IntelliJ IDEA suggests fixing it.
         System.out.printf("Hello and welcome!");
-
+        System.out.println();
         int maxNumber = 100;
+        System.out.println();
+        System.out.println("enumerate while");
 
         enumerate_while(maxNumber);
-
+        System.out.println();
         System.out.println("enumerate for");
 
         enumerate_for(maxNumber);
-
+        System.out.println();
         System.out.println("enumerate even");
 
         enumerate_even(maxNumber);
-
+        System.out.println();
         System.out.println("superior square");
 
         superior_square(63);
-
+        System.out.println();
         System.out.println("inferior square");
         inferior_square(30);
-
-        System.out.print("");
-
+        System.out.print(" ");
         inferior_square(63);
         System.out.println(" ");
 
@@ -40,7 +40,7 @@ public class Main {
         System.out.println(Arrays.toString( fibo(10)));
 
         System.out.println("fibo 2");
-        System.out.println(Arrays.toString(aproximative_fibo((float)0.01)));
+        System.out.println(Arrays.toString(approximation_fibo((float)0.01)));
 
         System.out.println("chaine de caractère");
         ArrayList<String> name = new ArrayList<>(List.of("jean", "Ahmed", "Lea", "Blanca" ));
@@ -94,27 +94,25 @@ public class Main {
             int nb1 = array[i-1];
             int nb2 = array[i-2];
             array[i] = nb1+nb2;
-
             i++;
         }
 
         return array;
     }
 
-    public static int[] aproximative_fibo(float epsilon){
+    public static int[] approximation_fibo(float epsilon){
 
         int[] array = fibo(10);
         float phi = ((float)(1+Math.sqrt(5))/2);
         int[] result = new int[2];
 
-        for(int i = array.length-1 ; i > 0  ; i--) {
+       
+       int i=0;
+        while(!(Math.abs((float)array[i+1]/array[i]-phi) < epsilon)){
+            i++;
+            result[0] = array[i+1];
+            result[1] = array[i];
 
-            if(((float)(Math.abs(array[i] / array[i-1]) - phi)) <= epsilon){
-
-                result[0] = array[i];
-                result[1] = array[i-1];
-                return result;
-            }
         }
 
         return result;
